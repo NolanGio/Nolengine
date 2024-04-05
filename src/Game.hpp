@@ -8,8 +8,8 @@
 
 #define WINDOW_WIDTH 250
 #define WINDOW_HEIGHT 250
-#define fps 60
-#define frameDelay 1000/fps
+#define FPS 60
+#define frameDelay 1000/FPS
 
 
 
