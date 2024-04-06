@@ -19,8 +19,6 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 {
     if (SDL_Init(SDL_INIT_EVERYTHING^SDL_INIT_HAPTIC) == 0)
     {
-        cout << "SDL initialized\n";
-        
         int flags = 0;
         if (fullscreen) 
         {
@@ -28,22 +26,23 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
         }
 
         window = SDL_CreateWindow(title, xpos, ypos, width, height, flags);
-        if (window)
+        if (!window)
         {
-            cout << "Window initialized\n";
+            cout << "Window failed to initialize\n";
         }
 
         renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_PRESENTVSYNC);
-        if (renderer)
+        if (!renderer)
         {
+            cout << "Renderer failed to initialize\n";
+        } else {
             SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-            cout << "Renderer initialized\n";
         }
-        
-        playerTex = TextureManager::LoadTexture(renderer, "bin/assets/player.png", 150, 0, 150, 255);
-        if (playerTex)
+
+        playerTex = TextureManager::LoadTexture(renderer, "assets/player.png", 150, 0, 150, 255);
+        if (!playerTex)
         {
-            cout << "Texture loaded\n";
+            cout << "Texture failed to load\n";
         }
 
         destR.w = 8*5;

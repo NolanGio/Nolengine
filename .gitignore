@@ -4,3 +4,6 @@ bin/index.js
 bin/index.wasm
 bin/main.exe
 bin/main.out
+bin/SDL2.dll
+bin/SDL2_image.dll
+.vscode

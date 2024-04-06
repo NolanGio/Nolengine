@@ -5,4 +5,4 @@ linux:
 	g++ -o bin/main.out src/main.cpp -lSDL2 -lSDL2_image
 
 wasm:
-	em++ src/main.cpp -o bin/index.html -g -lm --bind -s USE_SDL=2 -s USE_SDL_IMAGE=2 -s SDL2_IMAGE_FORMATS='["png"]' --preload-file bin/assets/ --use-preload-plugins
+	em++ src/main.cpp -o bin/index.html -g -lm --bind -s USE_SDL=2 -s USE_SDL_IMAGE=2 -s SDL2_IMAGE_FORMATS='["png"]' --preload-file assets/ --use-preload-plugins
