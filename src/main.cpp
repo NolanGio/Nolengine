@@ -25,21 +25,16 @@ int main(int argv, char** args)
 
 void mainloop()
 {
+    #ifdef EMSCRIPTEN
     if (!game->running())
     {
         game->init("Nolengine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 250, 250, false);
     }
-
-    Uint32 frameStart;
-    int frameTime;
-
-    frameStart = SDL_GetTicks();
+    #endif
 
     game->handleEvents();
     game->update();
     game->render();
-
-    game->tick(60);
 
     if (!game->running())
     {
@@ -49,4 +44,6 @@ void mainloop()
         
         game->clean();
     }
+
+    game->tick(60);
 }

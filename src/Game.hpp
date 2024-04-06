@@ -18,7 +18,7 @@ public:
     void update();
     void render();
     void clean();
-    int tick(int framerate);
+    void tick(int framerate);
 
     bool running();
 

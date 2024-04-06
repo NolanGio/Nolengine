@@ -103,10 +103,10 @@ void Game::clean()
     cout << "SDL closed successfully\n";
 }
 
-int Game::tick(int framerate)
+void Game::tick(int framerate)
 {
     Uint32 frameTime = SDL_GetTicks() - frameStart;
-    Uint32 frameDelay = 1000/framerate;
+    float frameDelay = 1000/framerate;
 
     if (frameDelay > frameTime)
     {
