@@ -6,13 +6,6 @@
 
 
 
-#define WINDOW_WIDTH 250
-#define WINDOW_HEIGHT 250
-#define FPS 60
-#define frameDelay 1000/FPS
-
-
-
 class Game {
 
 public:
@@ -25,10 +18,14 @@ public:
     void update();
     void render();
     void clean();
+    int tick(int framerate);
 
     bool running();
 
 private:
+    Uint32 frameStart;
+    int WINDOW_WIDTH;
+    int WINDOW_HEIGHT;
     bool isRunning;
     SDL_Window *window;
     SDL_Renderer *renderer;

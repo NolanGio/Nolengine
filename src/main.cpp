@@ -13,7 +13,7 @@ int main(int argv, char** args)
     #ifdef EMSCRIPTEN
     emscripten_set_main_loop(mainloop, 0, 1);
     #else
-    game->init("Nolengine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WINDOW_WIDTH, WINDOW_HEIGHT, false);
+    game->init("Nolengine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 250, 250, false);
     while (game->running())
     {
         mainloop();
@@ -27,7 +27,7 @@ void mainloop()
 {
     if (!game->running())
     {
-        game->init("Nolengine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WINDOW_WIDTH, WINDOW_HEIGHT, false);
+        game->init("Nolengine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 250, 250, false);
     }
 
     Uint32 frameStart;
@@ -39,12 +39,7 @@ void mainloop()
     game->update();
     game->render();
 
-    frameTime = SDL_GetTicks() - frameStart;
-
-    if (frameDelay > frameTime)
-    {
-        SDL_Delay(frameDelay - frameTime);
-    }
+    game->tick(60);
 
     if (!game->running())
     {

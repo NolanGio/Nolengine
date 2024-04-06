@@ -17,6 +17,8 @@ Game::~Game()
 
 void Game::init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen)
 {
+    WINDOW_WIDTH = width;
+    WINDOW_HEIGHT = height;
     if (SDL_Init(SDL_INIT_EVERYTHING^SDL_INIT_HAPTIC) == 0)
     {
         int flags = 0;
@@ -76,6 +78,8 @@ void Game::update()
 {
     cnt++;
 
+    cout << cnt << "\n";
+
     destR.x = cnt % (WINDOW_WIDTH + destR.w + 2) - destR.w;  
 }
 
@@ -97,6 +101,19 @@ void Game::clean()
     SDL_Quit();
 
     cout << "SDL closed successfully\n";
+}
+
+int Game::tick(int framerate)
+{
+    Uint32 frameTime = SDL_GetTicks() - frameStart;
+    Uint32 frameDelay = 1000/framerate;
+
+    if (frameDelay > frameTime)
+    {
+        SDL_Delay(frameDelay - frameTime);
+    }
+
+    frameStart = SDL_GetTicks();
 }
 
 bool Game::running()
