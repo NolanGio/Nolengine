@@ -4,8 +4,6 @@
 #include <SDL2/SDL_image.h>
 #include <stdio.h>
 
-
-
 class Game {
 
 public:
@@ -31,8 +29,5 @@ private:
     SDL_Renderer *renderer;
 
 };
-
-
-
 
 #endif /* Game_hpp */
